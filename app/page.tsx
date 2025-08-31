@@ -42,7 +42,7 @@ export default async function Home() {
           {products.length > 0 && (
             <div className="flex justify-center">
               <Image
-                src={products[0].image}
+                src="/heroImage.png"
                 alt="hero banner"
                 width={400}
                 height={400}
