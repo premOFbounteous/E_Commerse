@@ -40,14 +40,17 @@ export default function Carousel({ products }: Props) {
     <div className="relative max-w-4xl mx-auto">
       <Card className="rounded-3xl shadow-2xl overflow-hidden">
         {/* Product Image - height reduced */}
-        <div className="relative w-full h-32 sm:h-40 md:h-48">
-  <Image
-    src={currentProduct.image}
-    alt={currentProduct.title}
-    fill
-    className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
-  />
-</div>
+        <div className="relative w-full h-40 sm:h-56 md:h-72 lg:h-80 flex items-center justify-center bg-white">
+          <Image
+            src={currentProduct.image}
+            alt={currentProduct.title}
+            fill
+            className="object-contain p-4 transition-transform duration-500 ease-in-out hover:scale-105"
+            sizes="(max-width: 640px) 100vw,
+                   (max-width: 1024px) 70vw,
+                   50vw"
+          />
+        </div>
 
 
         {/* Product Info */}
