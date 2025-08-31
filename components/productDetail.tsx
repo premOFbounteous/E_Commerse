@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useCartStore } from "@/store/storage";
@@ -29,7 +30,7 @@ export const ProductDetail = ({ product }: ProductCardProps) => {
       price: product.price,
       image: product.image,
       description: product.description || "",
-      category: "", // optional
+      category: "",
       quantity: 1,
     });
   };
@@ -41,27 +42,50 @@ export const ProductDetail = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
+      {/* Image Section */}
       {product.image && (
-        <div style={{ position: "relative", height: "240px", width: "100%" }}>
+        <div className="relative w-full md:w-1/2 h-64 md:h-auto">
           <Image
             src={product.image}
             alt={product.title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-contain p-6"
+            priority
           />
         </div>
       )}
 
-      <div>
-        <h1>{product.title}</h1>
-        {product.description && <p>{product.description}</p>}
-        <p>${product.price.toFixed(2)}</p>
-
+      {/* Details Section */}
+      <div className="p-6 flex flex-col justify-between md:w-1/2">
         <div>
-          <Button onClick={handleRemove}>-</Button>
-          <span>{quantity}</span> {/* ✅ dynamic quantity */}
-          <Button onClick={handleAdd}>+</Button>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">
+            {product.title}
+          </h1>
+          {product.description && (
+            <p className="text-gray-600 mb-4">{product.description}</p>
+          )}
+          <p className="text-xl font-semibold text-blue-600 mb-6">
+            ${product.price.toFixed(2)}
+          </p>
+        </div>
+
+        {/* Cart Controls */}
+        <div className="flex items-center gap-4">
+          <Button
+            onClick={handleRemove}
+            disabled={quantity === 0}
+            className="px-4 py-2 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 disabled:opacity-50"
+          >
+            -
+          </Button>
+          <span className="text-lg font-medium">{quantity}</span>
+          <Button
+            onClick={handleAdd}
+            className="px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+          >
+            +
+          </Button>
         </div>
       </div>
     </div>
