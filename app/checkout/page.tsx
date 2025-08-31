@@ -82,7 +82,9 @@ export default function CheckoutPage() {
               <span>Total</span>
               <span className="font-bold">${total.toFixed(2)}</span>
             </div>
-            <Button className="w-full mt-4" onClick={handleOrder}>
+            <Button className="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 active:scale-95 
+             transition-all duration-200 ease-in-out text-white font-semibold py-3 rounded-xl shadow-md 
+             hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-400" onClick={handleOrder}>
               Proceed to Payment
             </Button>
           </CardContent>
