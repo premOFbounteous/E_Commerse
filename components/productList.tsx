@@ -29,6 +29,11 @@ export const ProductList = ({ products }: Props) => {
     const descriptionMatch = product.description
       ? product.description.toLowerCase().includes(term)
       : false;
+    const categoryMatch = product.category
+    ? product.category.toLowerCase().includes(term)
+    : false;
+
+  return nameMatch || descriptionMatch || categoryMatch;
 
     return nameMatch || descriptionMatch;
   });
